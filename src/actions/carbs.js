@@ -12,17 +12,17 @@ const calulateTotal = carbs => {
 
 export default {
     addCarb: carb => (dispatch, getState) => {
-        const carbs = getState().carbs.list;
-        carbs.push(parseInt(carb, 10));
+        const list = getState().carbs.list.slice(0);
+        list.push(parseInt(carb, 10));
 
         dispatch({
             type: ACTION_TYPES.CARB_ADD,
             payload: {
-                carbs,
+                list,
             },
         });
 
-        const total = calulateTotal(carbs);
+        const total = calulateTotal(list);
 
         dispatch({
             type: ACTION_TYPES.CARB_TOTAL,
@@ -33,17 +33,17 @@ export default {
     },
 
     removeCarb: index => (dispatch, getState) => {
-        const carbs = getState().carbs.list;
-        carbs.splice(index, 1);
+        const list = getState().carbs.list.slice(0);
+        list.splice(index, 1);
 
         dispatch({
             type: ACTION_TYPES.CARB_REMOVE,
             payload: {
-                carbs,
+                list,
             },
         });
 
-        const total = calulateTotal(carbs);
+        const total = calulateTotal(list);
 
         dispatch({
             type: ACTION_TYPES.CARB_TOTAL,

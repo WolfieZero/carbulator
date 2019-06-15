@@ -1,28 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { List, ListItem } from 'framework7-react';
 
-const List = ({ items, onRemoveItem }) => {
+import actions from '../../actions';
+
+const CarbList = ({ items, handleRemoveCarb }) => {
     const list = [];
 
     items.forEach((item, index) => {
         list.push(
-            <li key={index}>
-                {item} &nbsp; &nbsp;
-                <span onClick={onRemoveItem.bind(this, index)}>X</span>
-            </li>
+            <ListItem key={index} title={item + 'g'}>
+                <span onClick={handleRemoveCarb.bind(this, index)}>X</span>
+            </ListItem>
         );
     });
 
     return (
-        <ul>
+        <List>
             {list}
-        </ul>
+        </List>
     );
 };
 
-List.propTypes = {
+CarbList.propTypes = {
     items: PropTypes.array.isRequired,
-    onRemoveItem: PropTypes.func.isRequired,
+    handleRemoveCarb: PropTypes.func.isRequired,
 };
 
-export default List;
+const mapStateToProperties = state => ({
+    items: state.carbs.list,
+});
+
+const mapDispatchToProperties = {
+    handleRemoveCarb: actions.carbs.removeCarb,
+};
+
+export default connect(
+    mapStateToProperties,
+    mapDispatchToProperties
+)(CarbList);

@@ -1,32 +1,60 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Button, Stepper, Row, Col } from 'framework7-react';
 
-const Add = ({ onAdd }) => {
-    const [carb, setCarb] = useState('');
+import actions from '../../actions';
 
-    const handleChange = event => {
-        event.persist();
-        setCarb(parseInt(event.target.value, 10));
-    };
+const Add = ({ handleAddCarb }) => {
+    const input = React.createRef();
+    const defaultValue = 0;
 
     const handleAdd = event => {
         event.preventDefault();
-        if (typeof carb === 'number') {
-            onAdd(carb);
-            setCarb('');
+        const carb = parseInt(input.current.getValue(), 10);
+        if (carb > 0) {
+            handleAddCarb(carb);
         }
     };
 
     return (
-        <form onSubmit={handleAdd}>
-            <input value={carb} onChange={handleChange} type="number" autoFocus />
-            <button type="submit">Add</button>
-        </form>
+        <>
+            <Row>
+                <Col>
+                    <Stepper
+                        large
+                        value={defaultValue}
+                        ref={input}
+                        min={0}
+                        max={1000}
+                        step={1}
+                        autorepeat={true}
+                        wraps={true}
+                        manualInputMode={true}
+                        decimalPoint={1}
+                    />
+                </Col>
+                <Col>
+                    <Button fill large type="submit" onClick={handleAdd}>Add</Button>
+                </Col>
+            </Row>
+        </>
     );
 };
 
 Add.propTypes = {
-    onAdd: PropTypes.func.isRequired,
+    handleAddCarb: PropTypes.func.isRequired,
 };
 
-export default Add;
+const mapStateToProperties = () => ({
+    // ...
+});
+
+const mapDispatchToProperties = {
+    handleAddCarb: actions.carbs.addCarb,
+};
+
+export default connect(
+    mapStateToProperties,
+    mapDispatchToProperties
+)(Add);

@@ -1,3 +1,9 @@
-import CarbCount from './carb-count';
+import CarbCountTotal from './carb-count.total';
+import CarbCountList from './carb-count.list';
+import CarbCountAdd from './carb-count.add';
 
-export default CarbCount;
+export {
+    CarbCountTotal,
+    CarbCountList,
+    CarbCountAdd,
+};
