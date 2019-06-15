@@ -3,26 +3,30 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
     List,
-    Block,
     Button,
-    Swiper,
     ListInput,
-    SwiperSlide,
 } from 'framework7-react';
 
 import actions from '../../actions';
 
 const Add = ({ handleAddCarb }) => {
-    const [carb, setCarb] = useState(0);
+    const [carbPer100, setCarbPer100] = useState(0);
+    const [carbServed, setCarbServed] = useState(0);
 
-    const handleChange = event => {
-        setCarb(parseInt(event.target.value, 10));
+    const handleChangePer100 = event => {
+        setCarbPer100(parseInt(event.target.value, 10));
+    };
+
+    const handleChangeServed = event => {
+        setCarbServed(parseInt(event.target.value, 10));
     };
 
     const handleAdd = event => {
         event.preventDefault();
-        if (carb > 0) {
-            handleAddCarb(carb);
+        if (carbPer100 > 0 && carbServed > 0) {
+            handleAddCarb(
+                (carbPer100 / 100) * carbServed
+            );
         }
     };
 
@@ -30,10 +34,16 @@ const Add = ({ handleAddCarb }) => {
         <>
             <List>
                 <ListInput
-                    label="Grams of carbohydrates"
+                    label="Carbs per 100g"
                     type="number"
                     pattern="\d*"
-                    onChange={handleChange}
+                    onChange={handleChangePer100}
+                />
+                <ListInput
+                    label="Actual grams served"
+                    type="number"
+                    pattern="\d*"
+                    onChange={handleChangeServed}
                 />
             </List>
             <Button fill large type="submit" onClick={handleAdd}>Add</Button>
