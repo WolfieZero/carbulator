@@ -1,4 +1,6 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = (environment, argv) => {
     const isProduction = argv.mode === 'production';
@@ -23,6 +25,17 @@ module.exports = (environment, argv) => {
             ],
         },
         plugins: [
+            new WorkboxPlugin.GenerateSW(),
+            new CopyWebpackPlugin([
+                {
+                    from: './src/assets/icons',
+                    to: './icons',
+                },
+                {
+                    from: './src/assets/manifest.json',
+                    to: './manifest.json',
+                },
+            ]),
             new HtmlWebPackPlugin({
                 minify: isProduction,
                 hash: isProduction,
