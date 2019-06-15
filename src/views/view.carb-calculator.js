@@ -1,12 +1,19 @@
 import React from 'react';
 import {
-    Block,
     Page,
+    Block,
     Navbar,
+    Swiper,
     Toolbar,
+    SwiperSlide,
 } from 'framework7-react';
 
-import { CarbCountTotal, CarbCountList, CarbCountAdd } from '../components/carb-count';
+import {
+    CarbCountAddRatio,
+    CarbCountTotal,
+    CarbCountList,
+    CarbCountAdd,
+} from '../components/carb-count';
 
 const CarbCalculator = () => (
     <Page>
@@ -15,9 +22,18 @@ const CarbCalculator = () => (
             <div />
             <CarbCountTotal />
         </Toolbar>
-        <Block>
-            <CarbCountAdd />
-        </Block>
+        <Swiper scrollbar>
+            <SwiperSlide>
+                <Block>
+                    <CarbCountAdd />
+                </Block>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Block>
+                    <CarbCountAddRatio />
+                </Block>
+            </SwiperSlide>
+        </Swiper>
         <CarbCountList />
     </Page>
 );
