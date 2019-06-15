@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@wolfiezero/eslint-config"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
