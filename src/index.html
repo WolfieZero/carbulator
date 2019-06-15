@@ -9,12 +9,20 @@
     <link type="image/x-icon" rel="icon" href="data:image/x-icon;base64,0">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#cc0099">
+    <meta name="theme-color" content="#578ad6">
 </head>
 
 <body>
     <!-- class="color-theme-pink theme-dark" -->
     <main id="index"></main>
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 </body>
 
 </html>

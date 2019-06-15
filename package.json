@@ -19,6 +19,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^2.1.1",
     "framework7": "^4.4.3",
     "framework7-react": "^4.4.3",
@@ -39,6 +40,7 @@
     "babel-loader": "^8.0.6",
     "eslint": "^5.16.0",
     "redux-devtools-extension": "^2.13.8",
-    "webpack-dev-server": "^3.7.1"
+    "webpack-dev-server": "^3.7.1",
+    "workbox-webpack-plugin": "^4.3.1"
   }
 }
