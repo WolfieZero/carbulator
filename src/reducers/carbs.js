@@ -6,7 +6,7 @@ const carbList = (state = {}, action) => {
         case ACTION_TYPES.CARB_REMOVE:
             return {
                 ...state,
-                carbs: action.payload.carbs,
+                list: action.payload.list,
             };
         case ACTION_TYPES.CARB_TOTAL:
             return {
