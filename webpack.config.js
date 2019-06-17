@@ -28,12 +28,8 @@ module.exports = (environment, argv) => {
             new WorkboxPlugin.GenerateSW(),
             new CopyWebpackPlugin([
                 {
-                    from: './src/assets/icons',
-                    to: './icons',
-                },
-                {
-                    from: './src/assets/manifest.json',
-                    to: './manifest.json',
+                    from: './src/assets/root',
+                    to: './',
                 },
             ]),
             new HtmlWebPackPlugin({
