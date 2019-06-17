@@ -2,7 +2,7 @@
   "name": "Carbulator",
   "theme_color": "#578ad6",
   "background_color": "#ffffff",
-  "display": "fullscreen",
+  "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
   "start_url": "/",
@@ -18,5 +18,7 @@
       "type": "image/png"
     }
   ],
-  "splash_pages": null
+  "splash_pages": null,
+  "dir" : "ltr",
+  "lang" : "en"
 }
