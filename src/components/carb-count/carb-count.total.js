@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 const Value = styled.div`
     font-size: 1.5em;
+    width: 100%;
+    text-align: center;
 `;
 
 const Total = ({ value }) => {

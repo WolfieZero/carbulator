@@ -17,9 +17,8 @@ import {
 
 const CarbCalculator = () => (
     <Page>
-        <Navbar title="Calculator" />
+        <Navbar title="Carbulator" />
         <Toolbar bottom>
-            <div />
             <CarbCountTotal />
         </Toolbar>
         <Swiper scrollbar>
