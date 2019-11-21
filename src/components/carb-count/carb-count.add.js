@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
     List,
-    Block,
     Button,
-    Swiper,
     ListInput,
-    SwiperSlide,
 } from 'framework7-react';
 
 import actions from '../../actions';
