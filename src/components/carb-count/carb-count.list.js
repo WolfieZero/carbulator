@@ -11,7 +11,13 @@ const CarbList = ({ items, handleRemoveCarb }) => {
   items.forEach((item, index) => {
     list.push(
       <ListItem key={index} title={item + 'g'}>
-        <span onClick={handleRemoveCarb.bind(this, index)}>remove</span>
+        <span
+          role="button"
+          onClick={() => handleRemoveCarb(index)}
+          tabIndex={index}
+        >
+          remove
+        </span>
       </ListItem>
     );
   });
