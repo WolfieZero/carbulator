@@ -4,16 +4,20 @@
   "description": "A carbohydrate and insulin therapy calculator",
   "private": true,
   "version": "0.1.1",
+  "engines": {
+    "node": ">=10.16.0"
+  },
   "scripts": {
     "start": "webpack-dev-server --mode=development --hot",
     "build": "npm i && webpack --mode=production",
     "build:dev": "npm i && webpack --mode=development",
-    "test": "node_modules/.bin/eslint . -c ./.eslintrc",
-    "fix": "node_modules/.bin/eslint . --fix",
     "v:pre": "branch=`git rev-parse --abbrev-ref HEAD`; prerelease=\"npm version prerelease --preid ${branch//[\\/]/-}\"; eval $prerelease;",
     "v:patch": "npm version patch",
     "v:minor": "npm version minor",
-    "v:major": "npm version major"
+    "v:major": "npm version major",
+    "eslint-check": "eslint --print-config src/index.js | eslint-config-prettier-check",
+    "fix": "npm run fix:js",
+    "fix:js": "eslint --fix ./src/**/*.js; prettier --write ./src/**/*.js"
   },
   "dependencies": {
     "@babel/core": "^7.4.5",
@@ -36,9 +40,20 @@
     "webpack-cli": "^3.3.4"
   },
   "devDependencies": {
-    "@wolfiezero/eslint-config": "^0.0.7",
+    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "eslint": "^5.16.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^1.19.1",
     "redux-devtools-extension": "^2.13.8",
     "webpack-dev-server": "^3.7.1",
     "workbox-webpack-plugin": "^4.3.1"

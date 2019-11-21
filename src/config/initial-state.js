@@ -1,8 +1,8 @@
 export default {
-    carbs: {
-        list: [
-            // ...
-        ],
-        total: 0,
-    },
+  carbs: {
+    list: [
+      // ...
+    ],
+    total: 0,
+  },
 };
