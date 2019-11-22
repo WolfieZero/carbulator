@@ -3,7 +3,7 @@
   "title": "Carbulator",
   "description": "A carbohydrate and insulin therapy calculator",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "engines": {
     "node": ">=10.16.0"
   },
